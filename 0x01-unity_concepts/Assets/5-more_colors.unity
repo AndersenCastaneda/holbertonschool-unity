@@ -700,7 +700,7 @@ PrefabInstance:
     - target: {fileID: 1686818798923077786, guid: d80c6c49143661144889df0433b786b3,
         type: 3}
       propertyPath: m_Name
-      value: ' Red Ball'
+      value: Red Ball
       objectReference: {fileID: 0}
     - target: {fileID: 1686818798923077790, guid: d80c6c49143661144889df0433b786b3,
         type: 3}
