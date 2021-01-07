@@ -15,4 +15,6 @@ public class LoadManager : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         SceneManager.LoadScene("maze");
     }
+
+    public void LoadMenu() => SceneManager.LoadScene("menu");
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿#pragma warning disable 0649
+
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -13,8 +15,8 @@ public class PlayerController : MonoBehaviour
     public Text winLoseText;
     public Image winLoseBG;
 
+    [SerializeField] private PlayerInput _input;
     private Rigidbody _rigidbody;
-    private PlayerInput _input;
     private Movement _movement;
     private int score = 0;
 
@@ -25,7 +27,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _rigidbody.constraints = RigidbodyConstraints.FreezePositionY;
-        _input = new PlayerInput();
         _movement = new Movement(_rigidbody, _input, speed);
     }
 
@@ -95,4 +96,5 @@ public class PlayerController : MonoBehaviour
         winLoseText.color = Color.white;
         winLoseBG.color = Color.red;
     }
+
 }
