@@ -1,45 +1,51 @@
-﻿using UnityEngine;
+﻿#pragma warning disable 0649
+using UnityEngine;
 
+/// <summary>
+/// PlayerController - Handle Player Movement and Jump
+/// </summary>
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody rb;
-    public float moveSpeed = 10f;
-    public bool isOnGround = true;
+    [SerializeField] private Float horizontal, vertical;
 
-    private void Awake() => rb = gameObject.GetComponent<Rigidbody>();
+    private CharacterController controller;
+    private Vector3 direction;
+    private Transform cam;
 
-    private void OnCollisionEnter(Collision collision)
+    private readonly float jumpSpeed = 2.7f;
+    private readonly float gravity = 9.81f;
+    private readonly float moveSpeed = 15f;
+
+    private float directionY;
+
+    private void Awake()
     {
-        if (collision.collider.CompareTag("Ground"))
-            isOnGround = true;
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-            Jump();
-    }
-
-    private void FixedUpdate() => Perform();
-
-    private void Perform()
-    {
-        if (isOnGround)
-            rb.MovePosition(rb.position + (new Vector3(InputManager.horizontal, 0, InputManager.vertical) * moveSpeed * Time.fixedDeltaTime));
-    }
-
-    private void Jump()
-    {
-        if (isOnGround)
+        if (controller == null)
         {
-            isOnGround = false;
-            rb.AddForce(new Vector3(InputManager.horizontal, 5, InputManager.vertical), ForceMode.Impulse);
+            controller = GetComponent<CharacterController>();
+            cam = Camera.main.transform;
         }
     }
 
-    private void StopMovement()
+    private void Update() => Movement();
+
+    private void Movement()
     {
-        rb.drag = 2;
-        this.enabled = false;
+        if (controller.isGrounded)
+        {
+            direction = Vector3.Normalize((vertical.value * cam.forward) + (horizontal.value * cam.right));
+            if (Input.GetKeyDown(KeyCode.Space))
+                directionY = jumpSpeed;
+        }
+        directionY -= gravity * Time.deltaTime;
+        direction.y = directionY;
+
+        if (direction.magnitude >= 0.1f)
+            controller.Move(direction * moveSpeed * Time.deltaTime);
+
+        if (transform.position.y < -50f)
+        {
+            transform.position = new Vector3(0f, 20f, 0f);
+        }
     }
 }
