@@ -4,25 +4,17 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     public Text TimerText;
-    private float startTime;
-    int minutes;
-    float seconds;
+    private float timer = 0.00f;
 
     private void OnEnable() => WinTrigger.OnWin += Inactive;
     private void OnDisable() => WinTrigger.OnWin -= Inactive;
 
-    private void Start() => startTime = Time.time;
+    void Update() => IncrementTimer();
 
-    void Update()
+    private void IncrementTimer()
     {
-        float t = Time.time - startTime;
-        minutes = ((int)t / 60);
-        seconds = (t % 60);
-
-        if (seconds < 10f)
-            TimerText.text = $"{minutes}:0{seconds.ToString("f2").Replace(",", ".")}";
-        else
-            TimerText.text = $"{minutes}:{seconds.ToString("f2").Replace(",", ".")}";
+        timer += Time.deltaTime;
+        TimerText.text = string.Format("{1:0}:{0:00.00}", timer % 60, timer / 60).Replace(",", ".");
     }
 
     private void Inactive()
