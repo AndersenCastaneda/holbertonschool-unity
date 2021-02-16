@@ -12,11 +12,13 @@ public class CameraController : MonoBehaviour
     private readonly float rotationSpeed = 1f;
     private readonly float minX = -20f;
     private readonly float maxX = 60f;
+    public bool isInverted;
 
     private void Start()
     {
         //Cursor.visible = false;
         //Cursor.lockState = CursorLockMode.Locked;
+        transform.SetParent(target);
     }
 
     private void LateUpdate() => CamControl();
@@ -26,8 +28,9 @@ public class CameraController : MonoBehaviour
     {
         if (Input.GetMouseButton(1))
         {
+            var invert = isInverted ? 1f : -1f;
             mouseX += inputX.value * rotationSpeed;
-            mouseY -= inputY.value * rotationSpeed;
+            mouseY -= inputY.value * rotationSpeed * invert;
             mouseY = Mathf.Clamp(mouseY, minX, maxX);
             transform.LookAt(target);
             target.rotation = Quaternion.Euler(mouseY, mouseX, 0f);

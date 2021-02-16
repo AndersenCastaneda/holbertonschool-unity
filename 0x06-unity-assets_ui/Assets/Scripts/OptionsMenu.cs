@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿#pragma warning disable 0649
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class OptionsMenu : MonoBehaviour
 {
-    public void Back() => SceneManager.LoadScene("MainMenu");
+    [SerializeField] private SceneState sceneState;
+
+    public void Back() => SceneManager.LoadScene(sceneState.previousScene);
 }

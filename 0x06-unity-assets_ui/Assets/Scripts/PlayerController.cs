@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     private CharacterController controller;
     private Vector3 direction;
-    private Transform cam;
+    [SerializeField] private Transform cam;
 
     private readonly float jumpSpeed = 2.7f;
     private readonly float gravity = 9.81f;
@@ -21,10 +21,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         if (controller == null)
-        {
             controller = GetComponent<CharacterController>();
-            cam = Camera.main.transform;
-        }
     }
 
     private void Update() => Movement();
@@ -37,15 +34,14 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
                 directionY = jumpSpeed;
         }
+
         directionY -= gravity * Time.deltaTime;
         direction.y = directionY;
 
         if (direction.magnitude >= 0.1f)
-            controller.Move(direction * moveSpeed * Time.deltaTime);
+            controller.Move(direction * (moveSpeed * Time.deltaTime));
 
         if (transform.position.y < -50f)
-        {
             transform.position = new Vector3(0f, 20f, 0f);
-        }
     }
 }

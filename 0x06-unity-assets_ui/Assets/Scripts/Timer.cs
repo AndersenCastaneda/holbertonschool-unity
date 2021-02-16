@@ -9,7 +9,7 @@ public class Timer : MonoBehaviour
     private void OnEnable() => WinTrigger.OnWin += Inactive;
     private void OnDisable() => WinTrigger.OnWin -= Inactive;
 
-    void Update() => IncrementTimer();
+    private void Update() => IncrementTimer();
 
     private void IncrementTimer()
     {
