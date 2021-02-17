@@ -12,6 +12,7 @@ public class CameraController : MonoBehaviour
     private readonly float rotationSpeed = 1f;
     private readonly float minX = -20f;
     private readonly float maxX = 60f;
+    [SerializeField] private ViewYState viewYState;
     public bool isInverted;
 
     private void Start()
@@ -19,6 +20,7 @@ public class CameraController : MonoBehaviour
         //Cursor.visible = false;
         //Cursor.lockState = CursorLockMode.Locked;
         transform.SetParent(target);
+        isInverted = viewYState.isInverted;
     }
 
     private void LateUpdate() => CamControl();

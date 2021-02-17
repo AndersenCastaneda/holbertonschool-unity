@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿#pragma warning disable 0649
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
     public Text TimerText;
     private float timer = 0.00f;
+    [SerializeField] private Text finalTime;
 
     private void OnEnable() => WinTrigger.OnWin += Inactive;
     private void OnDisable() => WinTrigger.OnWin -= Inactive;
@@ -22,5 +24,8 @@ public class Timer : MonoBehaviour
         TimerText.color = Color.green;
         TimerText.fontSize = 60;
         enabled = false;
+        Win();
     }
+
+    private void Win() => finalTime.text = TimerText.text;
 }

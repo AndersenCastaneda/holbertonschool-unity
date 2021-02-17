@@ -1111,6 +1111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 209f78685722cf14d81f74c1adcc76bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneState: {fileID: 11400000, guid: 8fda401ae3f98b8438f5ed316b664a93, type: 2}
 --- !u!1001 &2729192366880700540
 PrefabInstance:
   m_ObjectHideFlags: 0
