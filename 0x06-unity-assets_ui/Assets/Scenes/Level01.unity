@@ -16012,6 +16012,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3280645333631621879, guid: 74164f2d9e7127142b7b66f7ff8a22c1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74164f2d9e7127142b7b66f7ff8a22c1, type: 3}
 --- !u!1001 &5014365004134619428
