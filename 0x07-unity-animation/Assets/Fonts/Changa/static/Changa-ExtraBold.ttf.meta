@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: 18ad65999da26bf439978b32dc6c9952
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Changa
+  fontNames:
+  - Changa
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 7173ee101270c7c41bcb8521e1f84589, type: 3}
+  - {fileID: 12800000, guid: 61d957f00a0099c4d8f8d4ad79b03a46, type: 3}
+  - {fileID: 12800000, guid: a157a8b958afe0b4fabe3434b526f8ca, type: 3}
+  - {fileID: 12800000, guid: 122fda2a758b3344da38e4c63f7fb315, type: 3}
+  - {fileID: 12800000, guid: d47cc6ec5e945834b9f45f5b3b5bb74c, type: 3}
+  - {fileID: 12800000, guid: 21201e5e24192a140b0490732000dfca, type: 3}
+  - {fileID: 12800000, guid: 063900cfd4fe5814e94ea47540ae232e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
