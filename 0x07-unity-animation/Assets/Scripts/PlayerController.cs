@@ -12,11 +12,14 @@ public class PlayerController : MonoBehaviour
     private Vector3 direction;
     [SerializeField] private Transform cam;
 
+    [SerializeField] private Animator animator;
+
     private readonly float jumpSpeed = 2.7f;
     private readonly float gravity = 9.81f;
     private readonly float moveSpeed = 15f;
 
     private float directionY;
+    private bool isJumping;
 
     private void Awake()
     {
@@ -28,11 +31,36 @@ public class PlayerController : MonoBehaviour
 
     private void Movement()
     {
+        if (vertical.value > 0)
+        {
+            animator.SetBool("MoveBackward", false);
+            animator.SetBool("MoveForward", true);
+        }
+        else if (vertical.value < 0)
+        {
+            animator.SetBool("MoveForward", false);
+            animator.SetBool("MoveBackward", true);
+        }
+        else
+        {
+            animator.SetBool("MoveForward", false);
+            animator.SetBool("MoveBackward", false);
+        }
+
         if (controller.isGrounded)
         {
             direction = Vector3.Normalize((vertical.value * cam.forward) + (horizontal.value * cam.right));
+            if (isJumping)
+            {
+                isJumping = false;
+                animator.SetBool("IsJumping", isJumping);
+            }
             if (Input.GetKeyDown(KeyCode.Space))
+            {
                 directionY = jumpSpeed;
+                isJumping = true;
+                animator.SetBool("IsJumping", isJumping);
+            }
         }
 
         directionY -= gravity * Time.deltaTime;
